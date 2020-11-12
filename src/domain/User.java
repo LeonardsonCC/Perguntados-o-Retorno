@@ -1,5 +1,6 @@
 package domain;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 
@@ -10,6 +11,19 @@ public class User {
     private StringProperty password;
     private StringProperty createdAt;
     private StringProperty updatedAt;
+    private BooleanProperty active;
+
+    public boolean isActive() {
+        return active.get();
+    }
+
+    public BooleanProperty activeProperty() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active.set(active);
+    }
 
     public String getName() {
         return name.get();

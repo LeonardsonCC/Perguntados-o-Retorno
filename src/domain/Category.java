@@ -1,5 +1,6 @@
 package domain;
 
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.StringProperty;
 
@@ -7,6 +8,19 @@ public class Category {
 
     private IntegerProperty id;
     private StringProperty name;
+    private BooleanProperty active;
+
+    public boolean isActive() {
+        return active.get();
+    }
+
+    public BooleanProperty activeProperty() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active.set(active);
+    }
 
     public int getId() {
         return id.get();
