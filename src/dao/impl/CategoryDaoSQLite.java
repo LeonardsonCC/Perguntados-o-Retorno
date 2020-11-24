@@ -2,22 +2,22 @@ package dao.impl;
 
 import dao.CategoryDao;
 import domain.Category;
-import utils.MariaDBConnection;
+import utils.SQLiteDBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public final class CategoryDaoMariaDB implements CategoryDao {
+public final class CategoryDaoSQLite implements CategoryDao {
 
     final static String TABLE_NAME = "category";
-    final static String FIELD_ID = "category_id";
+    final static String FIELD_ID = "id_category";
     final static String FIELD_NAME = "name";
     final static String FIELD_ACTIVE = "active";
 
     public boolean add(Category category) {
-        Connection c = MariaDBConnection.getConnection();
+        Connection c = SQLiteDBConnection.getConnection();
         try {
             String sql = "INSERT INTO " + TABLE_NAME + " (" + FIELD_NAME + ", " + FIELD_ACTIVE + ") VALUES (?,?)";
             PreparedStatement ps = c.prepareStatement(sql);
@@ -33,12 +33,12 @@ public final class CategoryDaoMariaDB implements CategoryDao {
     }
 
     public boolean remove(Category category) {
-        Connection c = MariaDBConnection.getConnection();
+        Connection c = SQLiteDBConnection.getConnection();
         try {
             String sql = "UPDATE " + TABLE_NAME + " SET " + FIELD_ACTIVE + "=? WHERE " + FIELD_ID + "=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setBoolean(1, false);
-            ps.setInt(2, category.getId());
+            ps.setInt(2, category.getIdCategory());
             ps.executeUpdate();
             c.close();
             return true;
@@ -49,12 +49,12 @@ public final class CategoryDaoMariaDB implements CategoryDao {
     }
 
     public boolean update(Category category) {
-        Connection c = MariaDBConnection.getConnection();
+        Connection c = SQLiteDBConnection.getConnection();
         try {
             String sql = "UPDATE " + TABLE_NAME + " SET " + FIELD_NAME + "=? WHERE " + FIELD_ID + "=?";
             PreparedStatement ps = c.prepareStatement(sql);
             ps.setString(1, category.getName());
-            ps.setInt(2, category.getId());
+            ps.setInt(2, category.getIdCategory());
             ps.executeUpdate();
             c.close();
             return true;
@@ -65,7 +65,7 @@ public final class CategoryDaoMariaDB implements CategoryDao {
     }
 
     public ArrayList<Category> getAll(boolean onlyActives) {
-        Connection c = MariaDBConnection.getConnection();
+        Connection c = SQLiteDBConnection.getConnection();
         ArrayList<Category> categoryList = new ArrayList<Category>();
         try {
             String sql = "SELECT * FROM " + TABLE_NAME + " ORDER BY " + FIELD_NAME;
@@ -76,7 +76,7 @@ public final class CategoryDaoMariaDB implements CategoryDao {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Category category = new Category();
-                category.setId(rs.getInt(FIELD_ID));
+                category.setIdCategory(rs.getInt(FIELD_ID));
                 category.setName(rs.getString(FIELD_NAME));
                 category.setActive(rs.getBoolean(FIELD_ACTIVE));
                 categoryList.add(category);

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0"
+            prefWidth="345.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controladores.PrincipalController">
+    <children>
+        <VBox layoutY="-2.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <HBox prefHeight="116.0" prefWidth="346.0">
+                    <children>
+                        <ImageView fitHeight="89.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@logo.PNG"/>
+                            </image>
+                            <HBox.margin>
+                                <Insets left="20.0" top="10.0"/>
+                            </HBox.margin>
+                        </ImageView>
+                        <HBox prefHeight="132.0" prefWidth="254.0">
+                            <children>
+                                <Label prefHeight="66.0" prefWidth="141.0" text="Pergunta">
+                                    <HBox.margin>
+                                        <Insets left="50.0" top="30.0"/>
+                                    </HBox.margin>
+                                    <font>
+                                        <Font name="Calibri Light Italic" size="27.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="29.0" prefWidth="346.0">
+                    <children>
+                        <Label text="Texto:">
+                            <HBox.margin>
+                                <Insets left="148.0" top="5.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="Calibri Light" size="19.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="50.0"/>
+                    </VBox.margin>
+                </HBox>
+                <HBox prefHeight="39.0" prefWidth="346.0">
+                    <children>
+                        <Label text="&quot;Pergunta&quot;">
+                            <font>
+                                <Font name="Calibri Light" size="19.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0" top="5.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="35.0" prefWidth="346.0">
+                    <VBox.margin>
+                        <Insets top="30.0"/>
+                    </VBox.margin>
+                    <children>
+                        <Label text="Respostas:">
+                            <HBox.margin>
+                                <Insets left="135.0"/>
+                            </HBox.margin>
+                            <font>
+                                <Font name="Calibri Light" size="19.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="27.0" prefWidth="346.0">
+                    <VBox.margin>
+                        <Insets top="5.0"/>
+                    </VBox.margin>
+                    <children>
+                        <Label text="&quot;Resposta 1&quot;">
+                            <font>
+                                <Font name="Calibri Light" size="19.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="30.0" prefWidth="346.0">
+                    <VBox.margin>
+                        <Insets top="5.0"/>
+                    </VBox.margin>
+                    <children>
+                        <HBox prefHeight="40.0" prefWidth="346.0">
+                            <HBox.margin>
+                                <Insets top="5.0"/>
+                            </HBox.margin>
+                            <children>
+                                <Label text="&quot;Resposta 2&quot;">
+                                    <font>
+                                        <Font name="Calibri Light" size="19.0"/>
+                                    </font>
+                                    <HBox.margin>
+                                        <Insets left="10.0"/>
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </HBox>
+                <HBox prefHeight="30.0" prefWidth="346.0">
+                    <VBox.margin>
+                        <Insets top="5.0"/>
+                    </VBox.margin>
+                    <children>
+                        <Label text="&quot;Resposta 3&quot;">
+                            <font>
+                                <Font name="Calibri Light" size="19.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+                <HBox prefHeight="30.0" prefWidth="346.0">
+                    <VBox.margin>
+                        <Insets top="5.0"/>
+                    </VBox.margin>
+                    <children>
+                        <Label text="&quot;Resposta 4&quot;">
+                            <font>
+                                <Font name="Calibri Light" size="19.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="10.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

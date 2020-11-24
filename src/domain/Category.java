@@ -6,7 +6,7 @@ import javafx.beans.property.StringProperty;
 
 public class Category {
 
-    private IntegerProperty id;
+    private IntegerProperty idCategory;
     private StringProperty name;
     private BooleanProperty active;
 
@@ -14,35 +14,35 @@ public class Category {
         return active.get();
     }
 
-    public BooleanProperty activeProperty() {
-        return active;
-    }
-
     public void setActive(boolean active) {
         this.active.set(active);
     }
 
-    public int getId() {
-        return id.get();
+    public BooleanProperty activeProperty() {
+        return active;
+    }
+
+    public int getIdCategory() {
+        return idCategory.get();
+    }
+
+    public void setIdCategory(int idCategory) {
+        this.idCategory.set(idCategory);
     }
 
     public IntegerProperty idProperty() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id.set(id);
+        return idCategory;
     }
 
     public String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name.set(name);
+    }
+
+    public StringProperty nameProperty() {
+        return name;
     }
 }

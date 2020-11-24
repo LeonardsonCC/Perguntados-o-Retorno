@@ -1,17 +1,15 @@
 package domain;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class User {
-    private IntegerProperty id;
-    private StringProperty name;
-    private StringProperty username;
-    private StringProperty password;
-    private StringProperty createdAt;
-    private StringProperty updatedAt;
-    private BooleanProperty active;
+    private IntegerProperty idUser = new SimpleIntegerProperty();
+    private StringProperty name = new SimpleStringProperty();
+    private StringProperty email = new SimpleStringProperty();
+    private StringProperty password = new SimpleStringProperty();
+    private StringProperty createdAt = new SimpleStringProperty();
+    private StringProperty updatedAt = new SimpleStringProperty();
+    private BooleanProperty active = new SimpleBooleanProperty();
 
     public boolean isActive() {
         return active.get();
@@ -37,28 +35,28 @@ public class User {
         this.name.set(name);
     }
 
-    public int getId() {
-        return id.get();
+    public int getIdUser() {
+        return idUser.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
+    public IntegerProperty idUserProperty() {
+        return idUser;
     }
 
-    public void setId(int id) {
-        this.id.set(id);
+    public void setIdUser(int idUser) {
+        this.idUser.set(idUser);
     }
 
-    public String getUsername() {
-        return username.get();
+    public String getEmail() {
+        return email.get();
     }
 
-    public StringProperty usernameProperty() {
-        return username;
+    public StringProperty emailProperty() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username.set(username);
+    public void setEmail(String email) {
+        this.email.set(email);
     }
 
     public String getPassword() {

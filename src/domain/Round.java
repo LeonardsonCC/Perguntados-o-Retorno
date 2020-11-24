@@ -7,10 +7,10 @@ import java.util.ArrayList;
 
 public class Round {
 
-    private IntegerProperty id;
+    private IntegerProperty idRound;
     private User player;
     private Category category;
-    private ArrayList<Question> questions = new ArrayList<>();
+    private ArrayList<RoundQuestion> questions = new ArrayList<>();
     private BooleanProperty active;
 
     public boolean isActive() {
@@ -25,12 +25,12 @@ public class Round {
         this.active.set(active);
     }
 
-    public int getId() {
-        return id.get();
+    public int getIdRound() {
+        return idRound.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
+    public IntegerProperty idRoundProperty() {
+        return idRound;
     }
 
     public User getPlayer() {
@@ -51,7 +51,16 @@ public class Round {
         return this;
     }
 
-    public void setId(int id) {
-        this.id.set(id);
+    public void setIdRound(int idRound) {
+        this.idRound.set(idRound);
+    }
+
+    public ArrayList<RoundQuestion> getQuestions() {
+        return questions;
+    }
+
+    public Round setQuestions(ArrayList<RoundQuestion> questions) {
+        this.questions = questions;
+        return this;
     }
 }

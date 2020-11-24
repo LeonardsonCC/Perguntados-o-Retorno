@@ -6,10 +6,19 @@ import javafx.beans.property.StringProperty;
 
 public class Question {
 
-    private IntegerProperty id;
+    private IntegerProperty idQuestion;
     private StringProperty title;
     private StringProperty text;
     private BooleanProperty active;
+    private Category category;
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 
     public boolean isActive() {
         return active.get();
@@ -24,15 +33,15 @@ public class Question {
     }
 
     public int getId() {
-        return id.get();
+        return idQuestion.get();
     }
 
-    public IntegerProperty idProperty() {
-        return id;
+    public IntegerProperty idQuestionProperty() {
+        return idQuestion;
     }
 
-    public void setId(int id) {
-        this.id.set(id);
+    public void setIdQuestion(int idQuestion) {
+        this.idQuestion.set(idQuestion);
     }
 
     public String getTitle() {
