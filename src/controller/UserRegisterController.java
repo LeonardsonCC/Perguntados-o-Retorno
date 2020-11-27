@@ -1,6 +1,5 @@
 package controller;
 
-import dao.UserDao;
 import dao.impl.UserDaoSQLite;
 import domain.User;
 import javafx.fxml.FXML;

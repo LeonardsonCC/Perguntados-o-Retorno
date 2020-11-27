@@ -1,14 +1,12 @@
 package domain;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 
 public class Category {
 
-    private IntegerProperty idCategory;
-    private StringProperty name;
-    private BooleanProperty active;
+    private IntegerProperty idCategory = new SimpleIntegerProperty();
+    private StringProperty name = new SimpleStringProperty();
+    private BooleanProperty active = new SimpleBooleanProperty();
 
     public boolean isActive() {
         return active.get();

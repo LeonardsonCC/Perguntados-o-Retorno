@@ -2,6 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,8 +11,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="553.0"
-            prefWidth="349.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0"
+            prefWidth="686.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controladores.PrincipalController">
     <children>
         <VBox layoutY="-2.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
@@ -40,154 +42,13 @@
                         </HBox>
                     </children>
                 </HBox>
-                <HBox prefHeight="29.0" prefWidth="346.0">
-                    <children>
-                        <Label text="&quot;Jogador 1&quot;">
-                            <HBox.margin>
-                                <Insets left="10.0" top="5.0"/>
-                            </HBox.margin>
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                    <VBox.margin>
-                        <Insets top="50.0"/>
-                    </VBox.margin>
-                </HBox>
-                <HBox prefHeight="39.0" prefWidth="346.0">
-                    <children>
-                        <Label text="&quot;Jogador 2&quot;">
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                            <HBox.margin>
-                                <Insets left="10.0" top="5.0"/>
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                    <VBox.margin>
-                        <Insets top="5.0"/>
-                    </VBox.margin>
-                </HBox>
-                <HBox prefHeight="36.0" prefWidth="346.0">
-                    <children>
-                        <Label text="&quot;Jogador 3&quot;">
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                    <VBox.margin>
-                        <Insets left="10.0" top="5.0"/>
-                    </VBox.margin>
-                </HBox>
-                <HBox prefHeight="35.0" prefWidth="346.0">
-                    <VBox.margin>
-                        <Insets top="5.0"/>
-                    </VBox.margin>
-                    <children>
-                        <Label text="&quot;Jogador 4&quot;">
-                            <HBox.margin>
-                                <Insets left="10.0" top="5.0"/>
-                            </HBox.margin>
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox prefHeight="27.0" prefWidth="346.0">
-                    <VBox.margin>
-                        <Insets top="5.0"/>
-                    </VBox.margin>
-                    <children>
-                        <Label text="&quot;Jogador 5&quot;">
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                            <HBox.margin>
-                                <Insets left="10.0"/>
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox prefHeight="30.0" prefWidth="346.0">
-                    <VBox.margin>
-                        <Insets top="5.0"/>
-                    </VBox.margin>
-                    <children>
-                        <HBox prefHeight="40.0" prefWidth="346.0">
-                            <HBox.margin>
-                                <Insets top="5.0"/>
-                            </HBox.margin>
-                            <children>
-                                <Label text="&quot;Jogador 6&quot;">
-                                    <font>
-                                        <Font name="Calibri Light" size="19.0"/>
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="10.0"/>
-                                    </HBox.margin>
-                                </Label>
-                            </children>
-                        </HBox>
-                    </children>
-                </HBox>
-                <HBox prefHeight="30.0" prefWidth="346.0">
-                    <VBox.margin>
-                        <Insets top="5.0"/>
-                    </VBox.margin>
-                    <children>
-                        <Label text="&quot;Jogador 7&quot;">
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                            <HBox.margin>
-                                <Insets left="10.0"/>
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox prefHeight="30.0" prefWidth="346.0">
-                    <VBox.margin>
-                        <Insets top="5.0"/>
-                    </VBox.margin>
-                    <children>
-                        <Label text="&quot;Jogador 8&quot;">
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                            <HBox.margin>
-                                <Insets left="10.0"/>
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox prefHeight="30.0" prefWidth="346.0">
-                    <children>
-                        <Label text="&quot;Jogador 9&quot;">
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                            <HBox.margin>
-                                <Insets left="10.0"/>
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                </HBox>
-                <HBox prefHeight="30.0" prefWidth="346.0">
-                    <children>
-                        <Label text="&quot;Jogador 10&quot;">
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                            <HBox.margin>
-                                <Insets left="10.0"/>
-                            </HBox.margin>
-                        </Label>
-                    </children>
-                </HBox>
+                <TableView prefHeight="481.0" prefWidth="686.0">
+                    <columns>
+                        <TableColumn fx:id="colPosicao" prefWidth="31.0" text="#"/>
+                        <TableColumn fx:id="colPontuacao" prefWidth="180.0" text="Pontuação "/>
+                        <TableColumn fx:id="colNome" prefWidth="474.0" text="Nome"/>
+                    </columns>
+                </TableView>
             </children>
         </VBox>
     </children>
