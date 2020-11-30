@@ -1,8 +1,7 @@
 package controller;
 
-import dao.impl.AnswerDaoSQLite;
-import dao.impl.CategoryDaoSQLite;
-import dao.impl.QuestionDaoSQLite;
+import dao.sqlite.AnswerDaoSQLite;
+import dao.sqlite.QuestionDaoSQLite;
 import domain.Answer;
 import domain.Category;
 import domain.Question;
@@ -21,31 +20,27 @@ public class QuestionController {
 
     @FXML
     private RadioButton rbResposta1;
-
     @FXML
     private RadioButton rbResposta2;
-
     @FXML
     private RadioButton rbResposta3;
-
     @FXML
     private RadioButton rbResposta4;
 
     @FXML
     private Button btResponder;
 
-    RadioButton[] rbRespostas = new RadioButton[4];
-    ArrayList<Answer> answerList = null;
+    public RadioButton[] rbRespostas = new RadioButton[4];
+    public ArrayList<Answer> answerList = null;
 
     @FXML
     protected void initialize() {
-        ArrayList<Category> categoryList = new CategoryDaoSQLite().getAll(true);
         rbRespostas[0] = rbResposta1;
         rbRespostas[1] = rbResposta2;
         rbRespostas[2] = rbResposta3;
         rbRespostas[3] = rbResposta4;
 
-        Category selectedCategory = categoryList.get((int) (Math.random() * categoryList.size()));
+        Category selectedCategory = QuestionCategorySelectController.selectedCategory;
         if (selectedCategory != null) {
             ArrayList<Question> questionList = new QuestionDaoSQLite().getAllByCategory(selectedCategory);
             try {

@@ -1,4 +1,4 @@
-package dao.impl;
+package dao.sqlite;
 
 import dao.CategoryDao;
 import domain.Category;
@@ -15,6 +15,7 @@ public final class CategoryDaoSQLite implements CategoryDao {
     final static String FIELD_ID = "id_category";
     final static String FIELD_NAME = "name";
     final static String FIELD_ACTIVE = "active";
+    final static String FIELD_QUESTIONS_QUANTITY = "questions_quantity";
 
     public boolean add(Category category) {
         Connection c = SQLiteDBConnection.getConnection();
@@ -79,6 +80,41 @@ public final class CategoryDaoSQLite implements CategoryDao {
                 category.setIdCategory(rs.getInt(FIELD_ID));
                 category.setName(rs.getString(FIELD_NAME));
                 category.setActive(rs.getBoolean(FIELD_ACTIVE));
+                categoryList.add(category);
+            }
+            c.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return categoryList;
+    }
+
+    public ArrayList<Category> getAllWithQuantity() {
+        Connection c = SQLiteDBConnection.getConnection();
+        ArrayList<Category> categoryList = new ArrayList<Category>();
+        try {
+            String sql = "SELECT %s.%s, %s.%s, %s.%s, COUNT(%s.%s) AS questions_quantity " +
+                    "FROM %s LEFT JOIN %s ON (%s = %s) WHERE %s.%s=1";
+            sql = String.format(
+                    sql,
+                    TABLE_NAME, FIELD_ID,
+                    TABLE_NAME, FIELD_NAME,
+                    TABLE_NAME, FIELD_ACTIVE,
+                    QuestionDaoSQLite.TABLE_NAME, QuestionDaoSQLite.FIELD_ID,
+                    TABLE_NAME,
+                    QuestionDaoSQLite.TABLE_NAME,
+                    QuestionDaoSQLite.FIELD_ID, FIELD_ID,
+                    TABLE_NAME, FIELD_ID
+            );
+
+            PreparedStatement ps = c.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Category category = new Category();
+                category.setIdCategory(rs.getInt(FIELD_ID));
+                category.setName(rs.getString(FIELD_NAME));
+                category.setActive(rs.getBoolean(FIELD_ACTIVE));
+                category.setQuestionsQuantity(rs.getInt(FIELD_QUESTIONS_QUANTITY));
                 categoryList.add(category);
             }
             c.close();

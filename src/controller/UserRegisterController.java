@@ -1,6 +1,6 @@
 package controller;
 
-import dao.impl.UserDaoSQLite;
+import dao.sqlite.UserDaoSQLite;
 import domain.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

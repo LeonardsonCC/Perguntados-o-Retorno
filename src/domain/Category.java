@@ -7,6 +7,7 @@ public class Category {
     private IntegerProperty idCategory = new SimpleIntegerProperty();
     private StringProperty name = new SimpleStringProperty();
     private BooleanProperty active = new SimpleBooleanProperty();
+    private IntegerProperty questionsQuantity = new SimpleIntegerProperty(0);
 
     public boolean isActive() {
         return active.get();
@@ -42,5 +43,17 @@ public class Category {
 
     public StringProperty nameProperty() {
         return name;
+    }
+
+    public int getQuestionsQuantity() {
+        return questionsQuantity.get();
+    }
+
+    public IntegerProperty questionsQuantityProperty() {
+        return questionsQuantity;
+    }
+
+    public void setQuestionsQuantity(int questionsQuantity) {
+        this.questionsQuantity.set(questionsQuantity);
     }
 }

@@ -1,10 +1,14 @@
 package controller;
 
-import dao.impl.UserDaoSQLite;
+import dao.sqlite.UserDaoSQLite;
 import domain.User;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import main.Main;
 import utils.Message;
 
 public class LoginController {
@@ -31,7 +35,14 @@ public class LoginController {
             Message.error("Erro", "Usuário ou senha incorretos", "Erro ao logar");
             return;
         }
-        Message.success("SUCESSO", "SUCESSOOOO MEU QUERIDO", "SHOW DE BOLA");
+
+        try {
+            AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+            Scene scene = new Scene(playPane);
+            Main.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

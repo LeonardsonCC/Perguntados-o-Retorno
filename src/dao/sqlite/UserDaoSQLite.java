@@ -1,4 +1,4 @@
-package dao.impl;
+package dao.sqlite;
 
 import dao.UserDao;
 import domain.Admin;

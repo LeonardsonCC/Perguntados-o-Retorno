@@ -44,24 +44,9 @@
                         </HBox>
                     </children>
                 </HBox>
-                <HBox alignment="CENTER" prefHeight="29.0" prefWidth="346.0">
+                <HBox prefHeight="152.0" prefWidth="519.0">
                     <children>
-                        <Label text="Texto:">
-                            <HBox.margin>
-                                <Insets/>
-                            </HBox.margin>
-                            <font>
-                                <Font name="Calibri Light" size="19.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                    <VBox.margin>
-                        <Insets top="50.0"/>
-                    </VBox.margin>
-                </HBox>
-                <HBox prefHeight="116.0" prefWidth="345.0">
-                    <children>
-                        <TextArea fx:id="txtPergunta" editable="false" prefHeight="96.0" prefWidth="704.0">
+                        <TextArea fx:id="txtPergunta" editable="false" prefHeight="114.0" prefWidth="499.0">
                             <HBox.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                             </HBox.margin>
@@ -70,7 +55,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="35.0" prefWidth="346.0">
                     <VBox.margin>
-                        <Insets top="30.0"/>
+                        <Insets top="15.0"/>
                     </VBox.margin>
                     <children>
                         <Label alignment="CENTER" text="Respostas:">
@@ -83,13 +68,13 @@
                         </Label>
                     </children>
                 </HBox>
-                <HBox prefHeight="27.0" prefWidth="346.0">
+                <HBox prefHeight="100.0" prefWidth="519.0">
                     <VBox.margin>
                         <Insets top="5.0"/>
                     </VBox.margin>
                     <children>
-                        <RadioButton fx:id="rbResposta1" mnemonicParsing="false" prefHeight="22.0" prefWidth="660.0"
-                                     text="RadioButton">
+                        <RadioButton fx:id="rbResposta1" mnemonicParsing="false" prefHeight="63.0" prefWidth="499.0"
+                                     text="Carregando..." wrapText="true">
                             <font>
                                 <Font size="16.0"/>
                             </font>
@@ -102,10 +87,10 @@
                         </RadioButton>
                     </children>
                 </HBox>
-                <HBox prefHeight="27.0" prefWidth="346.0">
+                <HBox prefHeight="100.0" prefWidth="346.0">
                     <children>
-                        <RadioButton fx:id="rbResposta2" mnemonicParsing="false" prefHeight="22.0" prefWidth="660.0"
-                                     text="RadioButton" toggleGroup="$respostas">
+                        <RadioButton fx:id="rbResposta2" mnemonicParsing="false" prefHeight="63.0" prefWidth="660.0"
+                                     text="Carregando..." toggleGroup="$respostas" wrapText="true">
                             <font>
                                 <Font size="16.0"/>
                             </font>
@@ -115,10 +100,10 @@
                         </RadioButton>
                     </children>
                 </HBox>
-                <HBox prefHeight="27.0" prefWidth="346.0">
+                <HBox prefHeight="100.0" prefWidth="346.0">
                     <children>
-                        <RadioButton fx:id="rbResposta3" mnemonicParsing="false" prefHeight="22.0" prefWidth="660.0"
-                                     text="RadioButton" toggleGroup="$respostas">
+                        <RadioButton fx:id="rbResposta3" mnemonicParsing="false" prefHeight="100.0" prefWidth="499.0"
+                                     text="Carregando..." toggleGroup="$respostas" wrapText="true">
                             <font>
                                 <Font size="16.0"/>
                             </font>
@@ -128,10 +113,10 @@
                         </RadioButton>
                     </children>
                 </HBox>
-                <HBox prefHeight="27.0" prefWidth="346.0">
+                <HBox prefHeight="100.0" prefWidth="346.0">
                     <children>
-                        <RadioButton fx:id="rbResposta4" mnemonicParsing="false" prefHeight="22.0" prefWidth="660.0"
-                                     text="RadioButton" toggleGroup="$respostas">
+                        <RadioButton fx:id="rbResposta4" mnemonicParsing="false" prefHeight="163.0" prefWidth="499.0"
+                                     text="Carregando..." toggleGroup="$respostas" wrapText="true">
                             <font>
                                 <Font size="16.0"/>
                             </font>

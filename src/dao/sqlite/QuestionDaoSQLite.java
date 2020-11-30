@@ -1,11 +1,8 @@
-package dao.impl;
+package dao.sqlite;
 
 import dao.QuestionDao;
-import domain.Admin;
 import domain.Category;
 import domain.Question;
-import domain.User;
-import utils.PasswordHasher;
 import utils.SQLiteDBConnection;
 
 import java.sql.Connection;
