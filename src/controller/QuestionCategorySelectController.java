@@ -36,6 +36,7 @@ public class QuestionCategorySelectController {
     void btPlay() {
         selectedCategory = tbCategorias.getSelectionModel().getSelectedItem();
 
+        if (selectedCategory == null) return;
         try {
             currentRound = new Round();
             currentRound.setCategory(selectedCategory);
@@ -71,6 +72,17 @@ public class QuestionCategorySelectController {
         ArrayList<Category> categoryList = new CategoryDaoSQLite().getAllWithQuantity();
         if (categoryList.size() > 0) {
             tbCategorias.setItems(FXCollections.observableArrayList(categoryList));
+        }
+    }
+
+    @FXML
+    void btVoltar() {
+        try {
+            AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+            Scene scene = new Scene(playPane);
+            Main.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

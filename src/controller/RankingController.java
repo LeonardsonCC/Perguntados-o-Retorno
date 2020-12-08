@@ -63,9 +63,13 @@ public class RankingController {
             FileWriter fw = new FileWriter(file);
             fw.write("<html>");
             fw.write("<head>");
-            fw.write("<title>Ranking</title>");
+            fw.write("<title>Ranking - TOP 10</title>");
+            fw.write("<style>");
+            fw.write("*{ font-family: sans-serif } h2 {text-align: center} table {margin: auto}");
+            fw.write("</style>");
             fw.write("</head>");
             fw.write("<body>");
+            fw.write("<h2>Ranking</h2>");
             fw.write("<table>");
             fw.write("<th>#</td>");
             fw.write("<th>Nome<td>");

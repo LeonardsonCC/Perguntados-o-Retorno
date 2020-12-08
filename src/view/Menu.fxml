@@ -8,45 +8,40 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.MenuController">
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <children>
-      <VBox alignment="CENTER" layoutX="-73.0" layoutY="-1.0" prefHeight="383.0" prefWidth="260.0"
-            AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-            AnchorPane.topAnchor="-1.0">
+      <VBox alignment="CENTER" layoutX="-73.0" layoutY="-1.0" prefHeight="383.0" prefWidth="260.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
          <children>
             <ImageView fitHeight="133.0" fitWidth="105.0">
                <VBox.margin>
-                  <Insets bottom="20.0"/>
+                  <Insets bottom="20.0" />
                </VBox.margin>
                <image>
-                  <Image url="@logo.PNG"/>
+                  <Image url="@logo.PNG" />
                </image>
             </ImageView>
-            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btPlay" text="PLAY">
+            <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#btPlay" text="Jogar">
                <VBox.margin>
-                  <Insets bottom="5.0"/>
+                  <Insets bottom="5.0" />
                </VBox.margin>
                <font>
-                  <Font size="16.0"/>
+                  <Font size="16.0" />
                </font>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="135.0" layoutY="143.0" mnemonicParsing="false" onAction="#btRanking"
-                    text="RANKING">
+            <Button alignment="TOP_LEFT" layoutX="135.0" layoutY="143.0" mnemonicParsing="false" onAction="#btRanking" text="Ranking">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0"/>
+                  <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
                <font>
-                  <Font size="16.0"/>
+                  <Font size="16.0" />
                </font>
             </Button>
-            <Button alignment="TOP_LEFT" layoutX="135.0" layoutY="143.0" mnemonicParsing="false" onAction="#btQuit"
-                    text="QUIT">
+            <Button alignment="TOP_LEFT" layoutX="135.0" layoutY="143.0" mnemonicParsing="false" onAction="#btQuit" text="Sair">
                <VBox.margin>
-                  <Insets bottom="5.0" top="5.0"/>
+                  <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
                <font>
-                  <Font size="16.0"/>
+                  <Font size="16.0" />
                </font>
             </Button>
          </children>

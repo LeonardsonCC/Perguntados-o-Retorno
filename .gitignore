@@ -26,3 +26,4 @@ out/
 lib/
 .idea/
 /database/database_sqlite.db
+ranking.html
