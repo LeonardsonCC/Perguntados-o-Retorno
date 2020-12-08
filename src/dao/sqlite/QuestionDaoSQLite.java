@@ -23,18 +23,21 @@ public final class QuestionDaoSQLite implements QuestionDao {
         Connection c = SQLiteDBConnection.getConnection();
         try {
             String sql = String.format(
-                    "INSERT INTO %s (%s, %s, %s, %s) VALUES (?,?,?,?)",
+                    "INSERT INTO %s (%s, %s, %s) VALUES (?,?,?)",
                     TABLE_NAME,
-                    FIELD_TITLE,
                     FIELD_TEXT,
                     FIELD_CATEGORY,
                     FIELD_ACTIVE
             );
             PreparedStatement ps = c.prepareStatement(sql);
-            ps.setString(1, question.getTitle());
-            ps.setString(2, question.getText());
-            ps.setInt(3, question.getCategory().getIdCategory());
+            ps.setString(1, question.getText());
+            ps.setInt(2, question.getCategory().getIdCategory());
+            ps.setBoolean(3, question.isActive());
             ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+            question.setIdQuestion(rs.getInt(1));
+
             c.close();
             return true;
         } catch (Exception e) {
@@ -78,7 +81,6 @@ public final class QuestionDaoSQLite implements QuestionDao {
                 newQuestion.setActive(true);
                 newQuestion.setCategory(category);
                 newQuestion.setText(rs.getString("text"));
-                newQuestion.setTitle(rs.getString("title"));
                 newQuestion.setIdQuestion(rs.getInt("id_question"));
                 questions.add(newQuestion);
             }

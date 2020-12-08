@@ -4,6 +4,7 @@ public class RoundQuestion {
 
     private int idRoundQuestion;
     private Question question;
+    private Round round;
     private boolean isRight;
 
     public int getIdRoundQuestion() {
@@ -30,6 +31,15 @@ public class RoundQuestion {
 
     public RoundQuestion setRight(boolean right) {
         isRight = right;
+        return this;
+    }
+
+    public Round getRound() {
+        return round;
+    }
+
+    public RoundQuestion setRound(Round round) {
+        this.round = round;
         return this;
     }
 }

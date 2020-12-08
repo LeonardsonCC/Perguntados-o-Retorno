@@ -2,13 +2,19 @@ package controller;
 
 import dao.sqlite.AnswerDaoSQLite;
 import dao.sqlite.QuestionDaoSQLite;
+import dao.sqlite.RoundDaoSQLite;
 import domain.Answer;
 import domain.Category;
 import domain.Question;
+import domain.RoundQuestion;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
+import main.Main;
 import utils.Message;
 
 import java.util.ArrayList;
@@ -32,6 +38,8 @@ public class QuestionController {
 
     public RadioButton[] rbRespostas = new RadioButton[4];
     public ArrayList<Answer> answerList = null;
+    private static int currentQuestionIndex = 0;
+    private static RoundQuestion currentRoundQuestion = null;
 
     @FXML
     protected void initialize() {
@@ -42,9 +50,16 @@ public class QuestionController {
 
         Category selectedCategory = QuestionCategorySelectController.selectedCategory;
         if (selectedCategory != null) {
-            ArrayList<Question> questionList = new QuestionDaoSQLite().getAllByCategory(selectedCategory);
             try {
-                Question selectedQuestion = questionList.get((int) (Math.random() * questionList.size()));
+
+                // Obtém a questão atual da variavel estatica
+                Question selectedQuestion = QuestionCategorySelectController.currentRound.getQuestions()
+                                                .get(currentQuestionIndex).getQuestion();
+
+                currentRoundQuestion = new RoundQuestion();
+                currentRoundQuestion.setQuestion(selectedQuestion);
+                currentRoundQuestion.setRound(QuestionCategorySelectController.currentRound);
+
                 txtPergunta.setText(selectedQuestion.getText());
 
                 this.answerList = new AnswerDaoSQLite().getAllFromQuestion(selectedQuestion);
@@ -52,8 +67,8 @@ public class QuestionController {
                     rbRespostas[i].setText(this.answerList.get(i).getText());
                 }
             } catch (IndexOutOfBoundsException e) {
-                e.printStackTrace();
-                Message.error("Erro", "", "Houve um problema ao obter a questão");
+                Message.success("Fim", "", "Todas as questões foram respondidas");
+                redirectToMenu();
             }
         }
     }
@@ -69,12 +84,38 @@ public class QuestionController {
                 }
             }
 
-            if (selectedAnswer != null && selectedAnswer.isIsCorrect()) {
-                Message.success("SUCESSO", "", "Resposta correta!");
-            } else {
-                Message.error("FALHOU", "", "Resposta errada!");
+            try{
+                if (selectedAnswer != null && selectedAnswer.isIsCorrect()) {
+                    Message.success("SUCESSO", "", "Resposta correta!");
+                    QuestionCategorySelectController.currentRound.getQuestions().get(currentQuestionIndex)
+                            .setRight(true);
+
+                    currentRoundQuestion.setRight(true);
+                } else {
+                    Message.error("FALHOU", "", "Resposta errada!");
+                    QuestionCategorySelectController.currentRound.getQuestions().get(currentQuestionIndex)
+                            .setRight(false);
+                    currentRoundQuestion.setRight(false);
+                }
+
+                new RoundDaoSQLite().addRQ(currentRoundQuestion);
+                currentQuestionIndex++;
+                initialize();
+            } catch (IndexOutOfBoundsException e) {
+                Message.success("Fim", "", "Todas as questões foram respondidas");
+                redirectToMenu();
             }
         }
     }
 
+    private void redirectToMenu() {
+        currentQuestionIndex = 0;
+        try {
+            AnchorPane playPane = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+            Scene scene = new Scene(playPane);
+            Main.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

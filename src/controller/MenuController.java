@@ -28,7 +28,13 @@ public class MenuController {
 
     @FXML
     void btRanking() {
-
+        try {
+            AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/Ranking.fxml"));
+            Scene scene = new Scene(playPane);
+            Main.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

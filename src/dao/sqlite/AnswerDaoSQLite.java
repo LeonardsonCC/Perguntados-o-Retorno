@@ -20,6 +20,27 @@ public class AnswerDaoSQLite implements AnswerDao {
     String FIELD_ACTIVE = "active";
 
     public boolean add(Answer answer) {
+        Connection c = SQLiteDBConnection.getConnection();
+        try {
+            String sql = String.format(
+                    "INSERT INTO %s (%s, %s, %s, %s) VALUES (?,?,?,?)",
+                    TABLE_NAME,
+                    FIELD_TEXT,
+                    FIELD_QUESTION_ID,
+                    FIELD_IS_CORRECT,
+                    FIELD_ACTIVE
+            );
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, answer.getText());
+            ps.setInt(2, answer.getQuestion().getId());
+            ps.setBoolean(3, answer.isIsCorrect());
+            ps.setBoolean(4, answer.isActive());
+            ps.executeUpdate();
+            c.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

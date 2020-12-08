@@ -1,6 +1,7 @@
 package controller;
 
 import dao.sqlite.UserDaoSQLite;
+import domain.Admin;
 import domain.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +16,10 @@ public class LoginController {
 
     @FXML
     private TextField txtEmail;
-
     @FXML
     private PasswordField txtSenha;
+
+    public static User loggedUser = null;
 
     @FXML
     void lblLogar() {
@@ -37,9 +39,17 @@ public class LoginController {
         }
 
         try {
-            AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
-            Scene scene = new Scene(playPane);
-            Main.mainStage.setScene(scene);
+            loggedUser = u;
+
+            if (u instanceof Admin) {
+                AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/QuestionRegister.fxml"));
+                Scene scene = new Scene(playPane);
+                Main.mainStage.setScene(scene);
+            } else {
+                AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+                Scene scene = new Scene(playPane);
+                Main.mainStage.setScene(scene);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

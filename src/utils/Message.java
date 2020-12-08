@@ -13,7 +13,7 @@ public class Message {
     }
 
     public static void success(String title, String message, String header) {
-        Alert alert = new Alert(AlertType.CONFIRMATION);
+        Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setContentText(message);
         alert.setHeaderText(header);

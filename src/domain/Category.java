@@ -9,6 +9,11 @@ public class Category {
     private BooleanProperty active = new SimpleBooleanProperty();
     private IntegerProperty questionsQuantity = new SimpleIntegerProperty(0);
 
+    @Override
+    public String toString() {
+        return this.getName();
+    }
+
     public boolean isActive() {
         return active.get();
     }

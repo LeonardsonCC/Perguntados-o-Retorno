@@ -25,6 +25,10 @@ public final class CategoryDaoSQLite implements CategoryDao {
             ps.setString(1, category.getName());
             ps.setBoolean(1, category.isActive());
             ps.executeUpdate();
+
+            ResultSet rs = ps.getGeneratedKeys();
+            category.setIdCategory(rs.getInt(1));
+
             c.close();
             return true;
         } catch (Exception e) {
@@ -94,7 +98,7 @@ public final class CategoryDaoSQLite implements CategoryDao {
         ArrayList<Category> categoryList = new ArrayList<Category>();
         try {
             String sql = "SELECT %s.%s, %s.%s, %s.%s, COUNT(%s.%s) AS questions_quantity " +
-                    "FROM %s LEFT JOIN %s ON (%s = %s) WHERE %s.%s=1";
+                    "FROM %s JOIN %s ON (%s = %s) WHERE %s.%s=1 GROUP BY %s.%s";
             sql = String.format(
                     sql,
                     TABLE_NAME, FIELD_ID,
@@ -103,7 +107,8 @@ public final class CategoryDaoSQLite implements CategoryDao {
                     QuestionDaoSQLite.TABLE_NAME, QuestionDaoSQLite.FIELD_ID,
                     TABLE_NAME,
                     QuestionDaoSQLite.TABLE_NAME,
-                    QuestionDaoSQLite.FIELD_ID, FIELD_ID,
+                    QuestionDaoSQLite.FIELD_CATEGORY, FIELD_ID,
+                    TABLE_NAME, FIELD_ACTIVE,
                     TABLE_NAME, FIELD_ID
             );
 

@@ -2,16 +2,18 @@ package domain;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 import java.util.ArrayList;
 
 public class Round {
 
-    private IntegerProperty idRound;
-    private User player;
-    private Category category;
+    private IntegerProperty idRound = new SimpleIntegerProperty();
+    private User player = null;
+    private Category category = null;
     private ArrayList<RoundQuestion> questions = new ArrayList<>();
-    private BooleanProperty active;
+    private BooleanProperty active = new SimpleBooleanProperty();
 
     public boolean isActive() {
         return active.get();

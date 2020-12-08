@@ -11,6 +11,20 @@ public class User {
     private StringProperty updatedAt = new SimpleStringProperty();
     private BooleanProperty active = new SimpleBooleanProperty();
 
+    public int getScore() {
+        return score.get();
+    }
+
+    public IntegerProperty scoreProperty() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score.set(score);
+    }
+
+    private IntegerProperty score = new SimpleIntegerProperty(0);
+
     public boolean isActive() {
         return active.get();
     }
