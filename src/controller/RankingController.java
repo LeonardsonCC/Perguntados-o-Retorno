@@ -1,6 +1,7 @@
 package controller;
 
 import dao.sqlite.UserDaoSQLite;
+import domain.Admin;
 import domain.User;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -40,7 +41,11 @@ public class RankingController {
     @FXML
     void btVoltar() {
         try {
-            AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+            AnchorPane playPane;
+            if (LoginController.loggedUser instanceof Admin)
+                playPane = FXMLLoader.load(getClass().getResource("/view/MenuAdm.fxml"));
+            else
+                playPane = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
             Scene scene = new Scene(playPane);
             Main.mainStage.setScene(scene);
         } catch (Exception e) {

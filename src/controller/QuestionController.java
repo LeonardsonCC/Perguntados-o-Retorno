@@ -3,10 +3,7 @@ package controller;
 import dao.sqlite.AnswerDaoSQLite;
 import dao.sqlite.QuestionDaoSQLite;
 import dao.sqlite.RoundDaoSQLite;
-import domain.Answer;
-import domain.Category;
-import domain.Question;
-import domain.RoundQuestion;
+import domain.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -111,7 +108,12 @@ public class QuestionController {
     private void redirectToMenu() {
         currentQuestionIndex = 0;
         try {
-            AnchorPane playPane = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+            AnchorPane playPane;
+            if (LoginController.loggedUser instanceof Admin)
+                playPane = FXMLLoader.load(getClass().getResource("/view/MenuAdm.fxml"));
+            else
+                playPane = FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+
             Scene scene = new Scene(playPane);
             Main.mainStage.setScene(scene);
         } catch (Exception e) {

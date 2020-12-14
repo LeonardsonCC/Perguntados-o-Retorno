@@ -3,10 +3,7 @@ package controller;
 import dao.sqlite.CategoryDaoSQLite;
 import dao.sqlite.QuestionDaoSQLite;
 import dao.sqlite.RoundDaoSQLite;
-import domain.Category;
-import domain.Question;
-import domain.Round;
-import domain.RoundQuestion;
+import domain.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -77,12 +74,23 @@ public class QuestionCategorySelectController {
 
     @FXML
     void btVoltar() {
-        try {
-            AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
-            Scene scene = new Scene(playPane);
-            Main.mainStage.setScene(scene);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (LoginController.loggedUser instanceof Admin) {
+            try {
+                AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/MenuAdm.fxml"));
+                Scene scene = new Scene(playPane);
+                Main.mainStage.setScene(scene);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+
+            try {
+                AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/Menu.fxml"));
+                Scene scene = new Scene(playPane);
+                Main.mainStage.setScene(scene);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

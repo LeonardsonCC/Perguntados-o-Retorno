@@ -12,21 +12,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0"
-            prefWidth="345.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="532.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
-      <VBox layoutY="-2.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0"
-            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutY="-2.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="184.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@logo.PNG"/>
+                        <Image url="@logo.PNG" />
                      </image>
                      <HBox.margin>
-                        <Insets left="120.0" top="20.0"/>
+                        <Insets left="120.0" top="20.0" />
                      </HBox.margin>
                   </ImageView>
                </children>
@@ -35,70 +32,82 @@
                <children>
                   <Label prefHeight="24.0" prefWidth="60.0" text="Email">
                      <HBox.margin>
-                        <Insets left="155.0" top="10.0"/>
+                        <Insets left="155.0" top="10.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Calibri Light" size="19.0"/>
+                        <Font name="Calibri Light" size="19.0" />
                      </font>
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="10.0"/>
+                  <Insets top="10.0" />
                </VBox.margin>
             </HBox>
             <HBox prefHeight="35.0" prefWidth="346.0">
                <children>
                   <TextField fx:id="txtEmail" prefHeight="27.0" prefWidth="316.0">
                      <HBox.margin>
-                        <Insets left="15.0" right="10.0" top="5.0"/>
+                        <Insets left="15.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
                </children>
                <VBox.margin>
-                  <Insets top="5.0"/>
+                  <Insets top="5.0" />
                </VBox.margin>
             </HBox>
             <HBox prefHeight="29.0" prefWidth="346.0">
                <VBox.margin>
-                  <Insets top="10.0"/>
+                  <Insets top="10.0" />
                </VBox.margin>
                <children>
                   <Label text="Senha">
                      <HBox.margin>
-                        <Insets left="150.0" top="5.0"/>
+                        <Insets left="150.0" top="5.0" />
                      </HBox.margin>
                      <font>
-                        <Font name="Calibri Light" size="19.0"/>
+                        <Font name="Calibri Light" size="19.0" />
                      </font>
                   </Label>
                </children>
             </HBox>
             <HBox prefHeight="30.0" prefWidth="346.0">
                <VBox.margin>
-                  <Insets top="5.0"/>
+                  <Insets top="5.0" />
                </VBox.margin>
                <children>
                   <PasswordField fx:id="txtSenha" prefHeight="26.0" prefWidth="316.0">
                      <HBox.margin>
-                        <Insets left="15.0" right="10.0" top="5.0"/>
+                        <Insets left="15.0" right="10.0" top="5.0" />
                      </HBox.margin>
                   </PasswordField>
                </children>
             </HBox>
-            <HBox prefHeight="36.0" prefWidth="346.0">
+            <HBox alignment="CENTER" prefHeight="36.0" prefWidth="346.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#lblLogar" text="Logar">
                      <font>
-                        <Font name="Calibri Light" size="19.0"/>
+                        <Font name="Calibri Light" size="19.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="140.0" top="50.0"/>
+                        <Insets top="20.0" />
                      </HBox.margin>
                   </Button>
                </children>
                <VBox.margin>
-                  <Insets top="10.0"/>
+                  <Insets top="10.0" />
                </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="36.0" prefWidth="346.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#btRegistrar" text="Registrar">
+                     <font>
+                        <Font name="Calibri Light" size="19.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="30.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
             </HBox>
          </children>
       </VBox>

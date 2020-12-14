@@ -12,12 +12,12 @@ import java.util.ArrayList;
 
 public class AnswerDaoSQLite implements AnswerDao {
 
-    String TABLE_NAME = "answer";
-    String FIELD_ID = "id_answer";
-    String FIELD_TEXT = "text";
-    String FIELD_QUESTION_ID = "question_id";
-    String FIELD_IS_CORRECT = "is_correct";
-    String FIELD_ACTIVE = "active";
+    static String TABLE_NAME = "answer";
+    static String FIELD_ID = "id_answer";
+    static String FIELD_TEXT = "text";
+    static String FIELD_QUESTION_ID = "question_id";
+    static String FIELD_IS_CORRECT = "is_correct";
+    static String FIELD_ACTIVE = "active";
 
     public boolean add(Answer answer) {
         Connection c = SQLiteDBConnection.getConnection();
@@ -49,6 +49,27 @@ public class AnswerDaoSQLite implements AnswerDao {
     }
 
     public boolean update(Answer answer) {
+        Connection c = SQLiteDBConnection.getConnection();
+        try {
+            String sql = String.format(
+                    "UPDATE %s SET %s=?, %s=?, %s=? WHERE %s=?",
+                    TABLE_NAME,
+                    FIELD_TEXT,
+                    FIELD_IS_CORRECT,
+                    FIELD_QUESTION_ID,
+                    FIELD_ID
+            );
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, answer.getText());
+            ps.setBoolean(2, answer.isIsCorrect());
+            ps.setInt(3, answer.getQuestion().getId());
+            ps.setInt(4, answer.getAnswer());
+            ps.executeUpdate();
+            c.close();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -76,6 +97,7 @@ public class AnswerDaoSQLite implements AnswerDao {
 
             while (rs.next()) {
                 Answer newAnswer = new Answer();
+                newAnswer.setAnswer(rs.getInt(FIELD_ID));
                 newAnswer.setText(rs.getString(FIELD_TEXT));
                 newAnswer.setIsCorrect(rs.getBoolean(FIELD_IS_CORRECT));
                 newAnswer.setActive(rs.getBoolean(FIELD_ACTIVE));

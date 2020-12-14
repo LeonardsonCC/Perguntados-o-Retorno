@@ -2,6 +2,8 @@ package domain;
 
 import javafx.beans.property.*;
 
+import java.util.ArrayList;
+
 public class Category {
 
     private IntegerProperty idCategory = new SimpleIntegerProperty();

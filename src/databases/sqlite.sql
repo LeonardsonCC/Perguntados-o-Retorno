@@ -1,58 +1,64 @@
-CREATE TABLE user
+create table category
 (
-    id_user  INTEGER PRIMARY KEY AUTOINCREMENT
-                       NOT NULL,
-    password CHAR(128) NOT NULL,
-    email    VARCHAR   NOT NULL,
-    name     VARCHAR   NOT NULL,
-    score    INTEGER,
-    is_admin BOOLEAN   NOT NULL,
-    active   BOOLEAN   NOT NULL
+    id_category INTEGER not null
+        primary key autoincrement,
+    name VARCHAR not null
+        unique,
+    active BOOLEAN not null
 );
 
-
-CREATE TABLE category
+create table question
 (
-    id_category INTEGER PRIMARY KEY AUTOINCREMENT
-                        NOT NULL,
-    name        VARCHAR NOT NULL
-        UNIQUE,
-    active      BOOLEAN NOT NULL
+    id_question INTEGER not null
+        primary key autoincrement,
+    text TEXT(255) not null,
+    category integer not null
+        references category (id_category),
+    active BOOLEAN not null
 );
 
-
-CREATE TABLE question
+create table answer
 (
-    id_question INTEGER PRIMARY KEY AUTOINCREMENT
-                          NOT NULL,
-    title       VARCHAR   NOT NULL,
-    text        TEXT(255) NOT NULL,
-    category              NOT NULL REFERENCES category (id_category),
-    active      BOOLEAN   NOT NULL
+    id_answer INTEGER not null
+        primary key autoincrement,
+    text VARCHAR not null,
+    question_id INTEGER
+        references question,
+    is_correct BOOLEAN not null,
+    active BOOLEAN not null
 );
 
-
-CREATE TABLE answer
+create table user
 (
-    id_answer   INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    text        VARCHAR                           NOT NULL,
-    question_id INTEGER REFERENCES question (id_question),
-    is_correct  BOOLEAN                           NOT NULL,
-    active      BOOLEAN                           NOT NULL
+    id_user INTEGER not null
+        primary key autoincrement,
+    password CHAR(128) not null,
+    email VARCHAR not null,
+    name VARCHAR not null,
+    score INTEGER,
+    is_admin BOOLEAN not null,
+    active BOOLEAN not null
 );
 
-CREATE TABLE round
+create table round
 (
-    id_round    INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    category_id INTEGER REFERENCES category (id_category),
-    user_id     INTEGER REFERENCES user (id_user),
-    active      BOOLEAN                           NOT NULL
+    id_round INTEGER not null
+        primary key autoincrement,
+    category_id INTEGER
+        references category,
+    user_id INTEGER
+        references user,
+    active BOOLEAN not null
 );
 
-CREATE TABLE round_question
+create table round_question
 (
-    id_round_question INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-    question_id       INTEGER REFERENCES question (id_question),
-    round_id          INTEGER REFERENCES round (id_round),
-    is_right          BOOLEAN
-)
+    id_round_question INTEGER not null
+        primary key autoincrement,
+    question_id INTEGER
+        references question,
+    round_id INTEGER
+        references round,
+    is_right BOOLEAN
+);
+

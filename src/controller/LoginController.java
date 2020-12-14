@@ -22,6 +22,17 @@ public class LoginController {
     public static User loggedUser = null;
 
     @FXML
+    void btRegistrar() {
+        try {
+            AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/UserRegister.fxml"));
+            Scene scene = new Scene(playPane);
+            Main.mainStage.setScene(scene);
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     void lblLogar() {
         if (txtEmail.getText().isEmpty() || txtSenha.getText().isEmpty()) {
             Message.error("Erro", "Necessário que todos os campos sejam preenchidos para prosseguir", "Algum dos campos não foi preenchido.");
@@ -42,7 +53,7 @@ public class LoginController {
             loggedUser = u;
 
             if (u instanceof Admin) {
-                AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/QuestionRegister.fxml"));
+                AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/MenuAdm.fxml"));
                 Scene scene = new Scene(playPane);
                 Main.mainStage.setScene(scene);
             } else {

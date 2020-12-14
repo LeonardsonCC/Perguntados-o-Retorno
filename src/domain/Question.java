@@ -2,6 +2,8 @@ package domain;
 
 import javafx.beans.property.*;
 
+import java.util.ArrayList;
+
 public class Question {
 
     private IntegerProperty idQuestion = new SimpleIntegerProperty();
@@ -9,6 +11,7 @@ public class Question {
     private StringProperty text = new SimpleStringProperty();
     private BooleanProperty active = new SimpleBooleanProperty();
     private Category category = new Category();
+    private ArrayList<Answer> answers = new ArrayList<>();
 
     public Category getCategory() {
         return category;
@@ -64,5 +67,14 @@ public class Question {
 
     public void setText(String text) {
         this.text.set(text);
+    }
+
+    public ArrayList<Answer> getAnswers() {
+        return answers;
+    }
+
+    public Question setAnswers(ArrayList<Answer> answers) {
+        this.answers = answers;
+        return this;
     }
 }

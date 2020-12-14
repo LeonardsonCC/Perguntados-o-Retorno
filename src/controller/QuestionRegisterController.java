@@ -8,7 +8,11 @@ import domain.Category;
 import domain.Question;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import main.Main;
 
 import java.util.ArrayList;
 
@@ -49,6 +53,7 @@ public class QuestionRegisterController {
 
     public RadioButton[] rbRespostas = new RadioButton[4];
     public TextField[] txtRespostas = new TextField[4];
+    public Question editingQuestion = null;
 
     public void initialize() {
         rbRespostas[0] = rbResposta1;
@@ -65,25 +70,85 @@ public class QuestionRegisterController {
         if (categoryList.size() > 0) {
             cbCategoria.setItems(FXCollections.observableArrayList(categoryList));
         }
+
+        if (QuestionManagementController.editQuestion != null) {
+            this.editingQuestion = new QuestionDaoSQLite().get(QuestionManagementController.editQuestion);
+
+            if (this.editingQuestion != null) {
+                for (int i=0; i<categoryList.size(); i++) {
+                    if (categoryList.get(i).getIdCategory() == this.editingQuestion.getCategory().getIdCategory()) {
+                        cbCategoria.getSelectionModel().select(i);
+                    }
+                }
+
+                txtPergunta.setText(this.editingQuestion.getText());
+
+                ArrayList<Answer> answers = this.editingQuestion.getAnswers();
+                for(int i=0; i<answers.size(); i++) {
+                    rbRespostas[i].setSelected(answers.get(i).isIsCorrect());
+                    txtRespostas[i].setText(answers.get(i).getText());
+                }
+            }
+        } else {
+            txtPergunta.setText("");
+            cbCategoria.getSelectionModel().select(0);
+            for(int i=0; i<rbRespostas.length; i++) {
+                rbRespostas[i].setSelected(false);
+                txtRespostas[i].setText("");
+            }
+        }
+    }
+
+    @FXML
+    void btVoltar() {
+        try {
+            AnchorPane playPane = (AnchorPane) FXMLLoader.load(getClass().getResource("/view/QuestionManagement.fxml"));
+            Scene scene = new Scene(playPane);
+            Main.mainStage.setScene(scene);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btRegistrar() {
+        boolean hasError = false;
         if (cbCategoria.getSelectionModel() != null && !txtPergunta.getText().isEmpty()) {
-            Question tmpQuestion = new Question();
-            tmpQuestion.setText(txtPergunta.getText());
-            tmpQuestion.setActive(true);
-            tmpQuestion.setCategory(cbCategoria.getSelectionModel().getSelectedItem());
-            new QuestionDaoSQLite().add(tmpQuestion);
+            if (this.editingQuestion != null) {
+                this.editingQuestion.setText(txtPergunta.getText());
+                this.editingQuestion.setActive(true);
+                this.editingQuestion.setCategory(cbCategoria.getSelectionModel().getSelectedItem());
+                if (!new QuestionDaoSQLite().update(this.editingQuestion)) hasError = true;
 
-            if (rbRespostas[0].getToggleGroup().getSelectedToggle() != null) {
-                for(int i=0; i<rbRespostas.length; i++) {
-                    if (!txtRespostas[i].getText().isEmpty()) {
-                        Answer tmpAnswer = new Answer();
-                        tmpAnswer.setQuestion(tmpQuestion);
-                        tmpAnswer.setText(txtRespostas[i].getText());
-                        tmpAnswer.setIsCorrect(rbRespostas[i].isSelected());
-                        new AnswerDaoSQLite().add(tmpAnswer);
+                if (respostas.getSelectedToggle() != null) {
+                    for(int i=0; i<rbRespostas.length; i++) {
+                        if (!txtRespostas[i].getText().isEmpty()) {
+                            this.editingQuestion.getAnswers().get(i).setQuestion(this.editingQuestion);
+                            this.editingQuestion.getAnswers().get(i).setText(txtRespostas[i].getText());
+                            this.editingQuestion.getAnswers().get(i).setIsCorrect(rbRespostas[i].isSelected());
+                            if (!new AnswerDaoSQLite().update(this.editingQuestion.getAnswers().get(i))) hasError = true;
+                        }
+                    }
+                } else {
+                    hasError = true;
+                }
+            }
+            else {
+                Question tmpQuestion = new Question();
+                tmpQuestion.setText(txtPergunta.getText());
+                tmpQuestion.setActive(true);
+                tmpQuestion.setCategory(cbCategoria.getSelectionModel().getSelectedItem());
+                new QuestionDaoSQLite().add(tmpQuestion);
+
+                if (rbRespostas[0].getToggleGroup().getSelectedToggle() != null) {
+                    for(int i=0; i<rbRespostas.length; i++) {
+                        if (!txtRespostas[i].getText().isEmpty()) {
+                            Answer tmpAnswer = new Answer();
+                            tmpAnswer.setQuestion(tmpQuestion);
+                            tmpAnswer.setText(txtRespostas[i].getText());
+                            tmpAnswer.setIsCorrect(rbRespostas[i].isSelected());
+                            new AnswerDaoSQLite().add(tmpAnswer);
+                        }
                     }
                 }
             }
