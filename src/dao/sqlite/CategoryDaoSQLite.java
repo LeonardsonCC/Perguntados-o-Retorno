@@ -98,7 +98,7 @@ public final class CategoryDaoSQLite implements CategoryDao {
         ArrayList<Category> categoryList = new ArrayList<Category>();
         try {
             String sql = "SELECT %s.%s, %s.%s, %s.%s, COUNT(%s.%s) AS questions_quantity " +
-                    "FROM %s JOIN %s ON (%s = %s) WHERE %s.%s=1 GROUP BY %s.%s";
+                    "FROM %s JOIN %s ON (%s = %s) WHERE %s.%s=1 AND %s.%s=1 GROUP BY %s.%s";
             sql = String.format(
                     sql,
                     TABLE_NAME, FIELD_ID,
@@ -109,6 +109,7 @@ public final class CategoryDaoSQLite implements CategoryDao {
                     QuestionDaoSQLite.TABLE_NAME,
                     QuestionDaoSQLite.FIELD_CATEGORY, FIELD_ID,
                     TABLE_NAME, FIELD_ACTIVE,
+                    QuestionDaoSQLite.TABLE_NAME, QuestionDaoSQLite.FIELD_ACTIVE,
                     TABLE_NAME, FIELD_ID
             );
 

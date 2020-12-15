@@ -48,7 +48,6 @@ public class QuestionController {
         Category selectedCategory = QuestionCategorySelectController.selectedCategory;
         if (selectedCategory != null) {
             try {
-
                 // Obtém a questão atual da variavel estatica
                 Question selectedQuestion = QuestionCategorySelectController.currentRound.getQuestions()
                                                 .get(currentQuestionIndex).getQuestion();

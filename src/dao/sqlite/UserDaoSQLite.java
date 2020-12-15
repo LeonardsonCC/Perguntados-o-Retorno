@@ -122,7 +122,7 @@ public final class UserDaoSQLite implements UserDao {
                     "JOIN %s r ON (r.%s = u.%s) " +
                     "JOIN %s rq ON (r.%s = rq.%s) " +
                     "AND rq.%s = 1 " +
-                    "GROUP BY u.%s LIMIT %d",
+                    "GROUP BY u.%s ORDER BY pontuation DESC LIMIT %d",
                     FIELD_NAME,
                     RoundDaoSQLite.FILED_RQ_ID,
                     TABLE_NAME,
